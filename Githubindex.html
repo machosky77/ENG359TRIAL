@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Public course page for ENG 359: Writing for (New) Media at the University of Hawaiʻi West Oʻahu.">
+  <title>ENG 359: Writing for (New) Media — UH West Oʻahu</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter & Newsreader for editorial aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            aina: {
+              50: '#f4f7f4',
+              100: '#e5ebe5',
+              200: '#cbdbcc',
+              500: '#3f6d4e',
+              600: '#2f563c',
+              700: '#23432e',
+              800: '#1b3424',
+              900: '#13261a',
+            },
+            amberhawaii: {
+              50: '#fffbeb',
+              500: '#d97706',
+              600: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom styling touches */
+    .tab-active {
+      border-color: #2f563c;
+      color: #2f563c;
+      background-color: #f4f7f4;
+    }
+    .dark .tab-active {
+      border-color: #cbdbcc;
+      color: #cbdbcc;
+      background-color: #1b3424;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+  </style>
+</head>
+
+<body class="bg-[#faf9f6] dark:bg-stone-950 text-stone-800 dark:text-stone-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-200">
+  
+  <!-- Global Notification Toast container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-stone-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-stone-700">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg" class="text-sm font-medium">Notification message</span>
+  </div>
+
+  <!-- Top Announcement Bar -->
+  <aside class="bg-aina-800 text-emerald-100 text-xs py-2 px-4 border-b border-aina-700 font-medium">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>University of Hawaiʻi – West Oʻahu | Division of Humanities</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-emerald-200">
+        <span>Prereq: ENG 100</span>
+        <span>•</span>
+        <span>3 Credits</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#faf9f6]/90 dark:bg-stone-950/90 backdrop-blur-md border-b border-stone-200 dark:border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        
+        <!-- Brand Title -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-aina-700 text-amber-300 font-serif font-bold text-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+            359
+          </div>
+          <div>
+            <div class="font-serif text-lg font-bold leading-tight text-stone-900 dark:text-white flex items-center gap-2">
+              ENG 359: Writing for (New) Media
+            </div>
+            <div class="text-xs text-stone-500 dark:text-stone-400">
+              Prof. Brenda Machosky • Focus: AI Tools &amp; Strategies
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-stone-600 dark:text-stone-300">
+          <a href="#modules" class="px-3 py-2 rounded-lg hover:text-aina-700 dark:hover:text-emerald-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors">Course Map</a>
+          <a href="#service-learning" class="px-3 py-2 rounded-lg hover:text-aina-700 dark:hover:text-emerald-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors flex items-center gap-1.5">
+            <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold">ʻĀina</span>
+            Service Learning
+          </a>
+          <a href="#ai-sandbox" class="px-3 py-2 rounded-lg hover:text-aina-700 dark:hover:text-emerald-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors">AI Prompt Lab</a>
+          <a href="#clos" class="px-3 py-2 rounded-lg hover:text-aina-700 dark:hover:text-emerald-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors">Objectives (CLOs)</a>
+          <a href="#disclosure-tool" class="px-3 py-2 rounded-lg hover:text-aina-700 dark:hover:text-emerald-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors">AI Disclosure Tool</a>
+        </nav>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-2">
+          <!-- Dark mode toggle -->
+          <button id="themeToggleBtn" aria-label="Toggle theme" class="p-2 rounded-xl border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-900 text-stone-600 dark:text-stone-300">
+            <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-stone-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </button>
+
+          <!-- Email Instructor Button -->
+          <a href="mailto:machosky@hawaii.edu" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-aina-700 hover:bg-aina-800 text-white shadow-sm transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            Contact Prof
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobileMenuBtn" aria-label="Toggle mobile menu" class="md:hidden p-2 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-stone-200 dark:border-stone-800 px-4 py-3 bg-[#faf9f6] dark:bg-stone-950 space-y-1">
+      <a href="#modules" class="block px-3 py-2 rounded-md font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-900">Course Map (16 Weeks)</a>
+      <a href="#service-learning" class="block px-3 py-2 rounded-md font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-900">Aloha ʻĀina Service Learning</a>
+      <a href="#ai-sandbox" class="block px-3 py-2 rounded-md font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-900">AI Prompt &amp; Editing Lab</a>
+      <a href="#clos" class="block px-3 py-2 rounded-md font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-900">Learning Objectives</a>
+      <a href="#disclosure-tool" class="block px-3 py-2 rounded-md font-medium text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-900">AI Disclosure Generator</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <section id="hero" class="relative overflow-hidden pt-10 pb-16 md:pt-14 md:pb-24 border-b border-stone-200 dark:border-stone-800 bg-gradient-to-b from-aina-50/50 via-transparent to-transparent dark:from-aina-900/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <div class="lg:col-span-8 space-y-6">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">
+              <span>🌺 University of Hawaiʻi West Oʻahu</span>
+              <span>•</span>
+              <span>15 Weeks + Showcase Final</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-900 dark:text-white leading-[1.15] tracking-tight">
+              Writing for <span class="italic text-aina-700 dark:text-emerald-400">(New)</span> Media.
+            </h1>
+
+            <p class="text-lg sm:text-xl text-stone-600 dark:text-stone-300 font-sans leading-relaxed max-w-3xl">
+              Write for <strong class="text-stone-900 dark:text-white font-semibold">human audiences first</strong>, then master artificial intelligence strategically. ENG 359 bridges traditional news reporting, PR, and advertising with cutting-edge prompt engineering, critical source verification, and authentic community kuleana.
+            </p>
+
+            <!-- Quick highlights badges -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3.5 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm">
+                <div class="text-xs uppercase tracking-wider text-stone-500 font-mono font-semibold">Core Focus</div>
+                <div class="text-sm font-semibold text-stone-800 dark:text-stone-200 mt-1">AI Prompting &amp; Editor's Eye</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm">
+                <div class="text-xs uppercase tracking-wider text-emerald-600 font-mono font-semibold">Community Track</div>
+                <div class="text-sm font-semibold text-stone-800 dark:text-stone-200 mt-1">Aloha ʻĀina / Land Back</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm col-span-2 sm:col-span-1">
+                <div class="text-xs uppercase tracking-wider text-amber-600 font-mono font-semibold">Final Deliverable</div>
+                <div class="text-sm font-semibold text-stone-800 dark:text-stone-200 mt-1">Job-Ready AI Portfolio</div>
+              </div>
+            </div>
+
+            <!-- Call to action buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#modules" class="px-5 py-3 rounded-xl bg-aina-700 hover:bg-aina-800 text-white font-medium text-sm shadow-md hover:shadow-lg transition flex items-center gap-2">
+                <span>Explore Weekly Course Map</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <a href="#ai-sandbox" class="px-5 py-3 rounded-xl bg-white dark:bg-stone-900 hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 font-medium text-sm border border-stone-200 dark:border-stone-800 shadow-sm transition flex items-center gap-2">
+                <span>Try AI Editor Simulator</span>
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Instructor & Info Card -->
+          <div class="lg:col-span-4 bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-200 dark:border-stone-800 shadow-lg relative">
+            <div class="absolute -top-3 right-6 bg-aina-600 text-amber-200 text-[11px] font-mono uppercase tracking-wider font-bold px-3 py-0.5 rounded-full shadow">
+              Faculty Profile
+            </div>
+            
+            <div class="flex items-center gap-4 pb-4 border-b border-stone-100 dark:border-stone-800">
+              <div class="w-14 h-14 rounded-full bg-stone-200 dark:bg-stone-700 flex items-center justify-center text-xl font-serif text-aina-800 dark:text-emerald-300 font-bold border-2 border-aina-500">
+                BM
+              </div>
+              <div>
+                <h3 class="font-bold text-stone-900 dark:text-white">Prof. Brenda Machosky</h3>
+                <p class="text-xs text-stone-500 dark:text-stone-400">Professor of English &amp; Humanities</p>
+                <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-0.5 font-mono">machosky@hawaii.edu</p>
+              </div>
+            </div>
+
+            <!-- Key course details list -->
+            <div class="py-4 space-y-3 text-xs">
+              <div class="flex justify-between items-center text-stone-600 dark:text-stone-400">
+                <span class="font-medium">Class Meeting</span>
+                <span class="text-stone-900 dark:text-stone-200 font-medium">15 Weeks + Final Project</span>
+              </div>
+              <div class="flex justify-between items-center text-stone-600 dark:text-stone-400">
+                <span class="font-medium">Prerequisites</span>
+                <span class="text-stone-900 dark:text-stone-200 font-mono">ENG 100</span>
+              </div>
+              <div class="flex justify-between items-center text-stone-600 dark:text-stone-400">
+                <span class="font-medium">Field Trip</span>
+                <span class="text-stone-900 dark:text-stone-200">Honolulu Advertiser Plant (Kapolei)</span>
+              </div>
+              <div class="flex justify-between items-center text-stone-600 dark:text-stone-400">
+                <span class="font-medium">Community Partner</span>
+                <span class="text-stone-900 dark:text-stone-200">Hawaiian Land Back / Trust for Public Land</span>
+              </div>
+            </div>
+
+            <!-- Download syllabus print trigger -->
+            <button onclick="window.print()" class="w-full mt-2 py-2 px-3 text-center text-xs font-semibold rounded-lg bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              Print / Save Syllabus (PDF)
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="modules" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="text-xs font-mono font-bold uppercase tracking-wider text-aina-600 dark:text-emerald-400">Comprehensive Curriculum</div>
+          <h2 class="text-3xl font-serif font-bold text-stone-900 dark:text-white mt-1">Course Map &amp; Weekly Schedule</h2>
+          <p class="text-stone-600 dark:text-stone-400 text-sm mt-1 max-w-2xl">
+            Click any module to inspect weekly S.M.A.R.T. learning objectives, multimedia materials, guided classroom activities, assessments, and instructor field notes.
+          </p>
+        </div>
+
+        <!-- Filter tabs for modules -->
+        <div class="flex flex-wrap items-center gap-1.5 p-1 bg-stone-200/70 dark:bg-stone-800/80 rounded-xl text-xs font-medium">
+          <button onclick="filterModules('all')" id="btn-filter-all" class="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-700 shadow-sm text-stone-900 dark:text-white transition">All Modules (6)</button>
+          <button onclick="filterModules('journalism')" id="btn-filter-journalism" class="px-3 py-1.5 rounded-lg text-stone-600 dark:text-stone-300 hover:text-stone-900 transition">Journalism</button>
+          <button onclick="filterModules('pr')" id="btn-filter-pr" class="px-3 py-1.5 rounded-lg text-stone-600 dark:text-stone-300 hover:text-stone-900 transition">PR &amp; Ads</button>
+          <button onclick="filterModules('ai')" id="btn-filter-ai" class="px-3 py-1.5 rounded-lg text-stone-600 dark:text-stone-300 hover:text-stone-900 transition">AI Mastery</button>
+          <button onclick="filterModules('sl')" id="btn-filter-sl" class="px-3 py-1.5 rounded-lg text-emerald-800 dark:text-emerald-300 hover:text-emerald-950 font-semibold transition">ʻĀina Track</button>
+        </div>
+      </div>
+
+      <!-- Module Grid -->
+      <div id="moduleContainer" class="space-y-6">
+
+        <!-- MODULE 1: Weeks 1-5 -->
+        <div class="module-card group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden" data-category="journalism sl ai">
+          <div class="p-6 cursor-pointer select-none" onclick="toggleModuleAccordion('mod1')">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-aina-100 text-aina-800 dark:bg-aina-900/60 dark:text-emerald-300">WEEKS 1–5</span>
+                <span class="text-xs text-stone-500 font-medium">Foundations of Media Writing</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">CLO 1, 2, 3, 4</span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">SL: Aloha ʻĀina</span>
+                <span id="mod1-chevron" class="text-stone-400 transform transition-transform duration-200 text-lg">▼</span>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold font-serif text-stone-900 dark:text-white group-hover:text-aina-700 dark:group-hover:text-emerald-400 transition-colors">
+              Print &amp; Broadcast News, SPJ Ethics, and Hawaiian Land Back Foundations
+            </h3>
+            
+            <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 line-clamp-2">
+              Traditional news media (print and radio/TV), background research, source interviews, inverted pyramid, broadcast news copyediting, and the ethics of reporting on ʻāina and community.
+            </p>
+          </div>
+
+          <!-- Expanded Content -->
+          <div id="mod1-content" class="px-6 pb-6 pt-2 border-t border-stone-100 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-950/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              
+              <!-- Col 1: Learning Objectives -->
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  Weekly S.M.A.R.T. Objectives
+                </div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-2">
+                  <li><strong class="text-stone-900 dark:text-white">LO1 (CLO1):</strong> Develop genre skills in news media writing with and without AI.</li>
+                  <li><strong class="text-stone-900 dark:text-white">LO2 (CLO2):</strong> Evaluate AI tools for source background research.</li>
+                  <li><strong class="text-stone-900 dark:text-white">LO3 (CLO3):</strong> Write news prompts; evaluate output with an editor's eye.</li>
+                  <li><strong class="text-stone-900 dark:text-white">LO4 (CLO4):</strong> Research, interview, and write for print and broadcast.</li>
+                  <li class="p-2 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800/50">
+                    <strong>SL-Objective:</strong> Explain relationship between ʻāina, community, and ethical communication.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Col 2: Learning Materials -->
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                  Readings &amp; Media
+                </div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• SPJ Code of Ethics with case studies</li>
+                  <li>• Contemporaneous print journalism samples</li>
+                  <li>• Tour: <em>Honolulu Advertiser Plant</em> (Kapolei)</li>
+                  <li>• Guest Speaker: Working broadcast/print journalist</li>
+                  <li>• Readings on Hawaiian Land Back and Aloha ʻĀina</li>
+                  <li>• Video: <em>Aloha ʻĀina</em> by Loften &amp; Vaughan-Lee (Emergence)</li>
+                  <li>• Kaliko Correa articles &amp; Trust for Public Land site</li>
+                </ul>
+              </div>
+
+              <!-- Col 3: Activities & AI Practice -->
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                  Weekly Activities
+                </div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Grammar, punctuation &amp; AP-style refresher</li>
+                  <li>• Inverted pyramid &amp; news values workout</li>
+                  <li>• <strong>AI Drill:</strong> Prompt AI for a lead; rewrite &amp; compare</li>
+                  <li>• Pitch feature idea; AI for structural outlines</li>
+                  <li>• Writing for ear vs. screen copyediting workshop</li>
+                  <li>• <strong>Listen-First Workshop:</strong> Reflection journal before writing assignments</li>
+                </ul>
+              </div>
+
+              <!-- Col 4: Graded Assessments -->
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                  Module Assessments
+                </div>
+                <ul class="text-xs text-stone-700 dark:text-stone-200 space-y-2">
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">1. News article covering local event</li>
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">2. Ethics Case Study Group Project</li>
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">3. Analysis of AI in Media Topic</li>
+                  <li class="p-2 rounded bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 font-medium">4. Reflection: <em>"What responsibilities come with writing for this community?"</em></li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MODULE 2: Weeks 6-8 -->
+        <div class="module-card group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden" data-category="pr sl ai">
+          <div class="p-6 cursor-pointer select-none" onclick="toggleModuleAccordion('mod2')">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-aina-100 text-aina-800 dark:bg-aina-900/60 dark:text-emerald-300">WEEKS 6–8</span>
+                <span class="text-xs text-stone-500 font-medium">Public Relations, Marketing &amp; Advertising</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">CLO 1, 2, 3</span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">SL: Community Land Visit</span>
+                <span id="mod2-chevron" class="text-stone-400 transform transition-transform duration-200 text-lg">▼</span>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold font-serif text-stone-900 dark:text-white group-hover:text-aina-700 dark:group-hover:text-emerald-400 transition-colors">
+              Strategic Messaging, Media Pitches &amp; Non-Profit vs. Commercial Brand Voice
+            </h3>
+            
+            <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 line-clamp-2">
+              Press releases, media pitches, headlines, body copy, and scripting. Iterative prompting for headline variations and analyzing partner organizations' communication materials for gaps.
+            </p>
+          </div>
+
+          <div id="mod2-content" class="hidden px-6 pb-6 pt-2 border-t border-stone-100 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-950/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 uppercase tracking-wider mb-2">Weekly Objectives</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-2">
+                  <li>• <strong>LO1 (CLO1):</strong> Develop genre skills in PR and ad writing.</li>
+                  <li>• <strong>LO2 (CLO2):</strong> Evaluate AI tools for media research &amp; pitch personalization.</li>
+                  <li>• <strong>LO3 (CLO3):</strong> Iterative prompting for PR/ad copy; evaluate brand voice &amp; ethical claims.</li>
+                  <li class="p-2 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-medium">
+                    <strong>SL-Objective:</strong> Analyze organization's current communication materials and identify messaging gaps.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Learning Materials</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• PR Writing Overview &amp; Guide to PR Writing</li>
+                  <li>• Professional guest speaker in PR / Communications</li>
+                  <li>• Review of Hawaiian Land Back organization websites and social feeds</li>
+                  <li>• Ad copy archives: Non-profit mission campaigns vs. corporate branding</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Practice &amp; Field Work</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Press release anatomy &amp; AI-assisted first draft prompt</li>
+                  <li>• Fact sheets, media crisis statement response</li>
+                  <li>• <strong>AI A/B Testing:</strong> Headline &amp; call-to-action variations</li>
+                  <li>• Storyboarding for ear &amp; screen ads</li>
+                  <li>• <strong>Community Land Visit</strong> with partner organization</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-2">Assessments</div>
+                <ul class="text-xs text-stone-700 dark:text-stone-200 space-y-2">
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">1. Complete PR Marketing Package with diverse elements (Release, Pitch, Script)</li>
+                  <li class="p-2 rounded bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 font-medium">2. Partner Organization Communication Recommendations Memo</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MODULE 3: Week 9 -->
+        <div class="module-card group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden" data-category="pr ai">
+          <div class="p-6 cursor-pointer select-none" onclick="toggleModuleAccordion('mod3')">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-aina-100 text-aina-800 dark:bg-aina-900/60 dark:text-emerald-300">WEEK 9</span>
+                <span class="text-xs text-stone-500 font-medium">Professional Business Communication</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">CLO 1, 3, 6</span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">SL: Deliverable Draft</span>
+                <span id="mod3-chevron" class="text-stone-400 transform transition-transform duration-200 text-lg">▼</span>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold font-serif text-stone-900 dark:text-white group-hover:text-aina-700 dark:group-hover:text-emerald-400 transition-colors">
+              Business Memos, Tone Calibration, and Human vs. AI Writing Comparison
+            </h3>
+            
+            <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 line-clamp-2">
+              Professional emails, internal memos, short reports, tone calibration, disclosure norms in corporate workplaces, and identifying when personal human writing is strictly required over AI.
+            </p>
+          </div>
+
+          <div id="mod3-content" class="hidden px-6 pb-6 pt-2 border-t border-stone-100 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-950/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 uppercase tracking-wider mb-2">Weekly Objectives</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-2">
+                  <li>• <strong>LO1 (CLO1):</strong> Develop skills in professional business genres.</li>
+                  <li>• <strong>LO2 (CLO3):</strong> Prompt for tone-appropriate professional drafts.</li>
+                  <li>• <strong>LO3 (CLO6):</strong> Critically engage with workplace AI policies and disclosure norms.</li>
+                  <li class="p-2 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-medium">
+                    <strong>SLO:</strong> Draft initial communication deliverables based on partner org priorities.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Materials &amp; Case Studies</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• University of Oregon Business Writing Guide</li>
+                  <li>• Case studies of AI "snafus" and embarrassing corporate hallucinations in business</li>
+                  <li>• Workplace AI policy samples &amp; disclosure standards</li>
+                  <li>• Partner feedback rubric on first-draft deliverable</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Activities</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Email, memo, and short report drafting</li>
+                  <li>• Executive summary crafting</li>
+                  <li>• <strong>Head-to-head comparison:</strong> Human drafted vs. AI drafted business appeal</li>
+                  <li>• Peer review workshop on partner materials</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-2">Assessments</div>
+                <ul class="text-xs text-stone-700 dark:text-stone-200 space-y-2">
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">1. Portfolio of Short Business Communications (executive email, crisis memo, report)</li>
+                  <li class="p-2 rounded bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 font-medium">2. Draft deliverable submitted for instructor + community partner feedback</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MODULE 4: Weeks 10-12 -->
+        <div class="module-card group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden" data-category="journalism sl ai">
+          <div class="p-6 cursor-pointer select-none" onclick="toggleModuleAccordion('mod4')">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-aina-100 text-aina-800 dark:bg-aina-900/60 dark:text-emerald-300">WEEKS 10–12</span>
+                <span class="text-xs text-stone-500 font-medium">Convergence Culture, Web &amp; Social Media</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">CLO 4, 5, 6</span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">SL: MAKE Phase</span>
+                <span id="mod4-chevron" class="text-stone-400 transform transition-transform duration-200 text-lg">▼</span>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold font-serif text-stone-900 dark:text-white group-hover:text-aina-700 dark:group-hover:text-emerald-400 transition-colors">
+              Platform-Specific Writing, Attention Economy &amp; Human-in-the-Loop Content Strategy
+            </h3>
+            
+            <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 line-clamp-2">
+              Participatory media, microcopy, social media captions (Instagram, LinkedIn, X, TikTok), AI scheduling and accessibility tools, and iterative revisions with community feedback.
+            </p>
+          </div>
+
+          <div id="mod4-content" class="hidden px-6 pb-6 pt-2 border-t border-stone-100 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-950/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 uppercase tracking-wider mb-2">Weekly Objectives</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-2">
+                  <li>• <strong>LO1 (CLO4):</strong> Write for web interfaces and social platforms.</li>
+                  <li>• <strong>LO2 (CLO5):</strong> Adapt writing for audience, platform, and purpose in convergence culture.</li>
+                  <li>• <strong>LO3 (CLO6):</strong> Critically engage with AI's role in the attention economy.</li>
+                  <li class="p-2 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-medium">
+                    <strong>SL-MAKE:</strong> Revise and refine partner deliverables based on community feedback.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Learning Materials</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Focus readings: Social media writing — benefits, dangers, and the threat of algorithm collapse</li>
+                  <li>• AI tools for digital accessibility (alt-text, captions, transcripts)</li>
+                  <li>• Community feedback notes from Hawaiian Land Back partners</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Activities</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Platform voice: Adapting 1 core story across Instagram carousel, TikTok caption, LinkedIn thought piece</li>
+                  <li>• Human-in-the-loop content calendar strategy</li>
+                  <li>• Co-creation workshop with partner organization liaison</li>
+                  <li>• Peer critique within tracks</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-2">Assessments</div>
+                <ul class="text-xs text-stone-700 dark:text-stone-200 space-y-2">
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">1. Critical Analysis of multiple contemporary social media forms</li>
+                  <li class="p-2 rounded bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 font-medium">2. Revised Community Deliverable + Process Log documenting feedback and modifications</li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MODULE 5: Weeks 13-15 -->
+        <div class="module-card group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden" data-category="ai sl">
+          <div class="p-6 cursor-pointer select-none" onclick="toggleModuleAccordion('mod5')">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-aina-100 text-aina-800 dark:bg-aina-900/60 dark:text-emerald-300">WEEKS 13–15</span>
+                <span class="text-xs text-stone-500 font-medium">AI in Professional Writing</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">CLO 2, 3, 6, 7</span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">SL: DELIVER Showcase</span>
+                <span id="mod5-chevron" class="text-stone-400 transform transition-transform duration-200 text-lg">▼</span>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold font-serif text-stone-900 dark:text-white group-hover:text-aina-700 dark:group-hover:text-emerald-400 transition-colors">
+              Advanced Prompt Engineering, Fact-Checking Workflows, IP &amp; Legal Ethics
+            </h3>
+            
+            <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 line-clamp-2">
+              Accuracy, bias, copyright, intellectual property, and disclosure norms in the 2026 workforce. Final preparation of partner deliverables for the community showcase.
+            </p>
+          </div>
+
+          <div id="mod5-content" class="hidden px-6 pb-6 pt-2 border-t border-stone-100 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-950/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 uppercase tracking-wider mb-2">Weekly Objectives</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-2">
+                  <li>• <strong>LO1 (CLO2):</strong> Evaluate AI tools for multi-step research &amp; fact-checking workflows.</li>
+                  <li>• <strong>LO2 (CLO3):</strong> Apply advanced prompt engineering (few-shot, persona, chain-of-thought).</li>
+                  <li>• <strong>LO3 (CLO6):</strong> Critically engage with copyright, IP, and bias.</li>
+                  <li>• <strong>LO4 (CLO7):</strong> Articulate AI competencies for job applications.</li>
+                  <li class="p-2 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-medium">
+                    <strong>SL-DELIVER:</strong> Present finished work; reflect on writing as relationship and responsibility.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Materials</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Industry legal whitepapers on GenAI copyright and fair use</li>
+                  <li>• Guest speakers: Media practitioners &amp; professional writers</li>
+                  <li>• Student-curated asset bank for community partner presentation</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Activities</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Fact-checking lab: Detecting hallucinations with cross-verification</li>
+                  <li>• Bias auditing exercise on generative outputs</li>
+                  <li>• Showcase rehearsal: Partner organization determines how artifacts are deployed</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-2">Assessments</div>
+                <ul class="text-xs text-stone-700 dark:text-stone-200 space-y-2">
+                  <li class="p-2 rounded bg-stone-100 dark:bg-stone-800/80 font-medium">1. Case Studies and Critical Engagement with AI in the Workforce</li>
+                  <li class="p-2 rounded bg-emerald-100/60 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 font-medium">2. Community Showcase Presentation &amp; Final Reflection: <em>"Writing is more than words — it is relationship, responsibility, and action."</em></li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- MODULE 6: Final Week -->
+        <div class="module-card group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden" data-category="ai pr journalism">
+          <div class="p-6 cursor-pointer select-none" onclick="toggleModuleAccordion('mod6')">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300">FINAL WEEK</span>
+                <span class="text-xs text-stone-500 font-medium">Culminating Portfolio &amp; Presentations</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">CLO 7</span>
+                <span id="mod6-chevron" class="text-stone-400 transform transition-transform duration-200 text-lg">▼</span>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-bold font-serif text-stone-900 dark:text-white group-hover:text-aina-700 dark:group-hover:text-emerald-400 transition-colors">
+              Professional AI Portfolio &amp; Job Market Competency Showcase
+            </h3>
+            
+            <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 line-clamp-2">
+              Translating course achievements into resume bullet points, documenting transparent AI workflows, delivering peer critiques, and final cross-platform submission.
+            </p>
+          </div>
+
+          <div id="mod6-content" class="hidden px-6 pb-6 pt-2 border-t border-stone-100 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-950/40">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 uppercase tracking-wider mb-2">Objective</div>
+                <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                  <strong class="text-stone-900 dark:text-white">LO1 (CLO7):</strong> Articulate AI competencies with clarity, ethics, and rigor for a professional portfolio or job application.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Materials</div>
+                <p class="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                  Student-curated resources, drafts, prompt logs, and final cross-platform portfolio packages created throughout the 15 weeks.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Workshop Focus</div>
+                <ul class="text-xs text-stone-600 dark:text-stone-300 space-y-1.5">
+                  <li>• Framing AI collaboration on resumes &amp; interviews</li>
+                  <li>• Documenting human oversight in process logs</li>
+                  <li>• Final project peer review and mutual evaluation</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
+                <div class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-2">Final Evaluation</div>
+                <p class="text-xs text-stone-700 dark:text-stone-200 font-medium">
+                  <strong>Final Project:</strong> Written deliverables, oral portfolio presentation, and peer reviews.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="service-learning" class="py-16 bg-aina-900 text-stone-100 border-t border-b border-aina-800 relative overflow-hidden">
+      <!-- Decorative background accent -->
+      <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-emerald-600/10 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-800/60 text-emerald-300 border border-emerald-700">
+            <span>🌿 Community Engagement Track</span>
+            <span>•</span>
+            <span>GenEd Ethics (E) Integrated</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-3">
+            Aloha ʻĀina, Land Back &amp; Ethical Communication
+          </h2>
+          <p class="text-stone-300 text-sm sm:text-base mt-2 leading-relaxed">
+            In ENG 359, writing is never an isolated technical exercise. Grounded in West Oʻahu, students partner with Native Hawaiian Land Back initiatives to practice respectful community protocol and ethical storytelling.
+          </p>
+        </div>
+
+        <!-- 4-Phase Service Learning Framework -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-10">
+          
+          <div class="bg-aina-800/80 border border-aina-700/80 rounded-2xl p-5 relative">
+            <div class="text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider">Phase 1 (Wks 1–5)</div>
+            <h4 class="text-lg font-serif font-bold text-white mt-1">1. Listen First</h4>
+            <p class="text-xs text-stone-300 mt-2 leading-relaxed">
+              No writing until after listening to Native Hawaiian community members, viewing <em>Aloha ʻĀina</em>, and completing an ethical reflection journal.
+            </p>
+            <div class="mt-4 text-[11px] font-mono text-emerald-300">Deliverable: Ethics Reflection</div>
+          </div>
+
+          <div class="bg-aina-800/80 border border-aina-700/80 rounded-2xl p-5 relative">
+            <div class="text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider">Phase 2 (Wks 6–8)</div>
+            <h4 class="text-lg font-serif font-bold text-white mt-1">2. Audit &amp; Visit</h4>
+            <p class="text-xs text-stone-300 mt-2 leading-relaxed">
+              In-person land visit with partner organizations. Analyze existing web and social channels to identify genuine messaging needs.
+            </p>
+            <div class="mt-4 text-[11px] font-mono text-emerald-300">Deliverable: Recommendations Memo</div>
+          </div>
+
+          <div class="bg-aina-800/80 border border-aina-700/80 rounded-2xl p-5 relative">
+            <div class="text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider">Phase 3 (Wks 10–12)</div>
+            <h4 class="text-lg font-serif font-bold text-white mt-1">3. Make &amp; Iterate</h4>
+            <p class="text-xs text-stone-300 mt-2 leading-relaxed">
+              Co-create media deliverables. Refine drafts using community feedback with human-in-the-loop oversight and accessibility checks.
+            </p>
+            <div class="mt-4 text-[11px] font-mono text-emerald-300">Deliverable: Process Revision Log</div>
+          </div>
+
+          <div class="bg-aina-800/80 border border-aina-700/80 rounded-2xl p-5 relative">
+            <div class="text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider">Phase 4 (Wks 13–15)</div>
+            <h4 class="text-lg font-serif font-bold text-white mt-1">4. Community Deliver</h4>
+            <p class="text-xs text-stone-300 mt-2 leading-relaxed">
+              Present finished communication assets. The partner organization decides what gets published, how, and where.
+            </p>
+            <div class="mt-4 text-[11px] font-mono text-emerald-300">Deliverable: Showcase Presentation</div>
+          </div>
+
+        </div>
+
+        <!-- Curated Partner Resources -->
+        <div class="mt-8 p-6 bg-stone-900/90 rounded-2xl border border-stone-800">
+          <h4 class="text-sm font-mono uppercase font-bold text-amber-300 tracking-wider mb-3">Partner Readings &amp; Media Links</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div class="p-3 bg-stone-800/60 rounded-xl">
+              <span class="font-bold text-white block">Trust for Public Land</span>
+              <span class="text-stone-400 block mt-1">Aloha ʻĀina community land stewardship and conservation sites in Hawaiʻi.</span>
+            </div>
+            <div class="p-3 bg-stone-800/60 rounded-xl">
+              <span class="font-bold text-white block">Kaliko Correa Articles</span>
+              <span class="text-stone-400 block mt-1">Perspectives on contemporary land sovereignty and cultural reclamation.</span>
+            </div>
+            <div class="p-3 bg-stone-800/60 rounded-xl">
+              <span class="font-bold text-white block">Emergence Magazine: Aloha ʻĀina</span>
+              <span class="text-stone-400 block mt-1">Visual film and essay by Adam Loften and Emmanuel Vaughan-Lee.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="ai-sandbox" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 mb-2">
+          Pedagogical Lab
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 dark:text-white">
+          The "Editor's Eye" AI Simulator
+        </h2>
+        <p class="text-stone-600 dark:text-stone-400 text-sm mt-2">
+          Experience the central skill taught in ENG 359: <span class="font-semibold text-stone-900 dark:text-white">Never copy-paste raw AI output</span>. Select a media genre, run the prompt, and compare the generic machine output against an edited, ethically grounded publishable version.
+        </p>
+      </div>
+
+      <!-- Simulator Interactive Shell -->
+      <div class="bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xl overflow-hidden">
+        
+        <!-- Top Toolbar with Presets -->
+        <div class="p-4 sm:p-5 bg-stone-100/70 dark:bg-stone-800/50 border-b border-stone-200 dark:border-stone-800 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold uppercase text-stone-500 dark:text-stone-400">Choose Scenario:</span>
+            <div class="flex flex-wrap gap-1.5" id="scenario-buttons">
+              <button onclick="loadScenario('lead')" id="btn-scen-lead" class="px-3 py-1 text-xs font-semibold rounded-lg bg-aina-700 text-white shadow-sm">News Lead (Module 1)</button>
+              <button onclick="loadScenario('pitch')" id="btn-scen-pitch" class="px-3 py-1 text-xs font-medium rounded-lg bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-300">PR Media Pitch (Module 2)</button>
+              <button onclick="loadScenario('memo')" id="btn-scen-memo" class="px-3 py-1 text-xs font-medium rounded-lg bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-300">Business Memo (Module 3)</button>
+            </div>
+          </div>
+          
+          <button onclick="runEditorSimulation()" class="px-4 py-2 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow transition flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Re-Simulate Comparison
+          </button>
+        </div>
+
+        <!-- Prompt input preview -->
+        <div class="p-5 border-b border-stone-200 dark:border-stone-800 bg-[#fdfcfb] dark:bg-stone-900">
+          <label class="block text-xs font-mono font-bold uppercase tracking-wider text-stone-500 mb-1">
+            Prompt Submitted by Student (Prompt Engineering LO3):
+          </label>
+          <div id="promptDisplay" class="font-mono text-xs sm:text-sm bg-stone-100 dark:bg-stone-950 p-3 rounded-xl border border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 overflow-x-auto">
+            "Write an inverted pyramid news lead about a community loʻi kalo restoration workday in West Oʻahu with 80 volunteers."
+          </div>
+        </div>
+
+        <!-- Split View: Raw AI Output vs Human-Edited Version -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-stone-200 dark:divide-stone-800">
+          
+          <!-- Column 1: Raw AI Draft -->
+          <div class="p-6 bg-red-50/20 dark:bg-red-950/10">
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                Raw AI Output (Unvetted)
+              </span>
+              <span class="text-xs text-stone-500 font-mono">Status: High Risk / Generic</span>
+            </div>
+
+            <div id="rawAiText" class="text-sm font-sans text-stone-700 dark:text-stone-300 leading-relaxed bg-white dark:bg-stone-950 p-4 rounded-xl border border-red-200 dark:border-red-900/50">
+              Loading scenario draft...
+            </div>
+
+            <!-- Editor audit flags -->
+            <div class="mt-4 space-y-2">
+              <div class="text-xs font-mono font-bold uppercase tracking-wider text-red-700 dark:text-red-400">Editor's Eye Flaws Identified:</div>
+              <ul id="flawsList" class="text-xs text-stone-600 dark:text-stone-400 space-y-1">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Column 2: Student Edited (Human-in-the-loop) -->
+          <div class="p-6 bg-emerald-50/20 dark:bg-emerald-950/10">
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Human-Edited &amp; Verified (Publishable)
+              </span>
+              <span class="text-xs text-emerald-700 dark:text-emerald-400 font-mono font-semibold">AP Style + Aloha ʻĀina</span>
+            </div>
+
+            <div id="editedAiText" class="text-sm font-serif text-stone-900 dark:text-white leading-relaxed bg-white dark:bg-stone-950 p-4 rounded-xl border border-emerald-300 dark:border-emerald-800 shadow-sm">
+              Loading edited copy...
+            </div>
+
+            <!-- Applied Techniques -->
+            <div class="mt-4 space-y-2">
+              <div class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Human Value Added:</div>
+              <ul id="improvementsList" class="text-xs text-stone-600 dark:text-stone-400 space-y-1">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer Bar of Sandbox -->
+        <div class="p-4 bg-stone-50 dark:bg-stone-950 border-t border-stone-200 dark:border-stone-800 text-xs text-stone-500 flex flex-wrap items-center justify-between gap-2">
+          <span>Module Alignment: <strong>CLO 1, CLO 3 &amp; CLO 6</strong></span>
+          <span class="italic font-serif">"AI generates possibilities; the trained writer provides conscience, accuracy, and truth."</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="clos" class="py-16 bg-stone-100/60 dark:bg-stone-900/40 border-t border-b border-stone-200 dark:border-stone-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-10">
+          <div class="text-xs font-mono font-bold uppercase tracking-wider text-aina-600 dark:text-emerald-400">Academic Standards</div>
+          <h2 class="text-3xl font-serif font-bold text-stone-900 dark:text-white mt-1">Course Learning Objectives (CLOs)</h2>
+          <p class="text-stone-600 dark:text-stone-400 text-sm mt-1">
+            Every lecture, prompting lab, and community project maps directly back to these 7 university competencies.
+          </p>
+        </div>
+
+        <!-- CLO Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <div class="p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 bg-aina-50 dark:bg-aina-950 px-2 py-0.5 rounded">CLO 1</span>
+                <span class="text-[11px] text-stone-400 font-mono">Weeks 1-5, 6-8, 9</span>
+              </div>
+              <h4 class="font-bold text-stone-900 dark:text-white text-sm mb-1.5">Genre Conventions</h4>
+              <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Develop skills in genre conventions across news, PR, advertising, and business communication — with and without AI assistance.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-500">
+              Evidence: News article, PR package, business memo
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 bg-aina-50 dark:bg-aina-950 px-2 py-0.5 rounded">CLO 2</span>
+                <span class="text-[11px] text-stone-400 font-mono">Weeks 1-5, 6-8, 13-15</span>
+              </div>
+              <h4 class="font-bold text-stone-900 dark:text-white text-sm mb-1.5">Research &amp; Fact-Checking</h4>
+              <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Use and critically evaluate AI tools for research, fact-checking, and source evaluation in journalism, PR contexts, multimodal media, and business.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-500">
+              Evidence: Source evaluation logs, verification audits
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 bg-aina-50 dark:bg-aina-950 px-2 py-0.5 rounded">CLO 3</span>
+                <span class="text-[11px] text-stone-400 font-mono">Weeks 1-5, 6-8, 9, 13-15</span>
+              </div>
+              <h4 class="font-bold text-stone-900 dark:text-white text-sm mb-1.5">Prompting &amp; Editor's Eye</h4>
+              <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Write effective prompts for professional writing tasks and evaluate AI output with an editor's eye for accuracy, voice, and ethical risk.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-500">
+              Evidence: Prompting logbooks &amp; rewrite comparisons
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 bg-aina-50 dark:bg-aina-950 px-2 py-0.5 rounded">CLO 4</span>
+                <span class="text-[11px] text-stone-400 font-mono">Weeks 1-5, 10-12</span>
+              </div>
+              <h4 class="font-bold text-stone-900 dark:text-white text-sm mb-1.5">Multi-Format Media Writing</h4>
+              <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Research, interview, and write for multiple media formats, including print, broadcast, web interfaces, and social media.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-500">
+              Evidence: Broadcast scripts, web articles, social packages
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 bg-aina-50 dark:bg-aina-950 px-2 py-0.5 rounded">CLO 5</span>
+                <span class="text-[11px] text-stone-400 font-mono">Weeks 10-12</span>
+              </div>
+              <h4 class="font-bold text-stone-900 dark:text-white text-sm mb-1.5">Convergence Adaptation</h4>
+              <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Adapt writing for audience, platform, and purpose in a convergence-era media environment.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-500">
+              Evidence: Cross-platform audience reframing
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono font-bold text-aina-700 dark:text-emerald-400 bg-aina-50 dark:bg-aina-950 px-2 py-0.5 rounded">CLO 6 &amp; 7</span>
+                <span class="text-[11px] text-stone-400 font-mono">Weeks 9, 13-15, Final</span>
+              </div>
+              <h4 class="font-bold text-stone-900 dark:text-white text-sm mb-1.5">Critical AI &amp; Portfolio</h4>
+              <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Critically engage with AI impact on professions and articulate AI competencies clearly for a professional portfolio or job application.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-[11px] text-stone-500">
+              Evidence: Final Capstone Portfolio &amp; Resume Artifacts
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="disclosure-tool" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <div class="text-xs font-mono font-bold uppercase tracking-wider text-aina-600 dark:text-emerald-400">Student Toolkit</div>
+          <h2 class="text-3xl font-serif font-bold text-stone-900 dark:text-white">
+            Academic AI Disclosure Statement Generator
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+            In ENG 359, transparency is mandatory. Whenever you use generative tools on an assignment, attach this generated disclosure statement to your submission explaining your tool choice, prompting strategy, and editorial verification.
+          </p>
+
+          <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 space-y-1.5">
+            <span class="font-bold block">Course Transparency Rule:</span>
+            <span>Unacknowledged AI generation is considered academic misconduct. Transparent, well-documented AI collaboration with an editor's eye is rewarded.</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-white dark:bg-stone-900 rounded-3xl p-6 border border-stone-200 dark:border-stone-800 shadow-lg space-y-4">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Assignment Name</label>
+              <input type="text" id="disc-assignment" value="Module 2: PR Marketing Package" class="w-full text-xs p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 focus:ring-2 focus:ring-aina-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">AI Tool &amp; Model Used</label>
+              <select id="disc-tool" class="w-full text-xs p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 focus:ring-2 focus:ring-aina-500 outline-none">
+                <option value="Anthropic Claude 3.5 Sonnet">Anthropic Claude 3.5 Sonnet</option>
+                <option value="Google Gemini Pro">Google Gemini Pro</option>
+                <option value="OpenAI ChatGPT (GPT-4o)">OpenAI ChatGPT (GPT-4o)</option>
+                <option value="No Generative AI Used (100% Human-Authored)">No AI Used (100% Human Drafted)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">How was AI integrated into the workflow?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+              <label class="flex items-center gap-1.5 p-2 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <input type="checkbox" id="chk-brainstorm" checked class="rounded text-aina-600 focus:ring-0">
+                <span>Brainstorming</span>
+              </label>
+              <label class="flex items-center gap-1.5 p-2 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <input type="checkbox" id="chk-lead" checked class="rounded text-aina-600 focus:ring-0">
+                <span>Headline / Leads</span>
+              </label>
+              <label class="flex items-center gap-1.5 p-2 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <input type="checkbox" id="chk-outline" class="rounded text-aina-600 focus:ring-0">
+                <span>Structural Outline</span>
+              </label>
+              <label class="flex items-center gap-1.5 p-2 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <input type="checkbox" id="chk-copyedit" checked class="rounded text-aina-600 focus:ring-0">
+                <span>AP Copyediting</span>
+              </label>
+              <label class="flex items-center gap-1.5 p-2 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <input type="checkbox" id="chk-factcheck" class="rounded text-aina-600 focus:ring-0">
+                <span>Fact Verification</span>
+              </label>
+              <label class="flex items-center gap-1.5 p-2 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <input type="checkbox" id="chk-accessibility" class="rounded text-aina-600 focus:ring-0">
+                <span>Alt-Text/A11y</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Human Verification &amp; Editorial Oversight Statement</label>
+            <input type="text" id="disc-verification" value="All statistics and partner names were manually cross-referenced against primary documents. Machine generated phrasing was rewritten for authentic voice." class="w-full text-xs p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 focus:ring-2 focus:ring-aina-500 outline-none">
+          </div>
+
+          <!-- Generated Output Box -->
+          <div class="pt-2">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-stone-500">Generated Disclosure Statement:</span>
+              <button onclick="copyDisclosureToClipboard()" class="text-xs font-semibold text-aina-700 dark:text-emerald-400 hover:underline flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                Copy to Clipboard
+              </button>
+            </div>
+            <textarea id="disclosureOutput" readonly rows="4" class="w-full p-3 font-mono text-xs rounded-xl bg-stone-100 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 resize-none"></textarea>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="bg-white dark:bg-stone-950 border-t border-stone-200 dark:border-stone-800 py-12 text-xs text-stone-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-aina-700 text-amber-300 font-serif font-bold text-sm flex items-center justify-center">
+            359
+          </div>
+          <div>
+            <div class="font-bold text-stone-900 dark:text-white">ENG 359: Writing for (New) Media</div>
+            <div>University of Hawaiʻi – West Oʻahu | Spring / Fall Semester</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 text-stone-600 dark:text-stone-400">
+          <a href="#hero" class="hover:underline">Back to Top</a>
+          <a href="#modules" class="hover:underline">Course Map</a>
+          <a href="#service-learning" class="hover:underline">ʻĀina Service Learning</a>
+          <a href="#ai-sandbox" class="hover:underline">AI Lab</a>
+          <a href="mailto:machosky@hawaii.edu" class="hover:underline">machosky@hawaii.edu</a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-stone-100 dark:border-stone-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-stone-400">
+        <div>
+          Course Designer &amp; Instructor: Prof. Brenda Machosky. Syllabus &amp; Course Map.
+        </div>
+        <div class="flex items-center gap-2">
+          <span>Hawaiian diacritics respected throughout (ʻokina and kahakō)</span>
+          <span>•</span>
+          <span>SPJ Ethics Compliant</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Management
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    
+    // Check saved theme or system preference
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Accordion Toggle for Modules
+    function toggleModuleAccordion(id) {
+      const content = document.getElementById(id + '-content');
+      const chevron = document.getElementById(id + '-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Module Category Filter
+    function filterModules(category) {
+      const cards = document.querySelectorAll('.module-card');
+      const buttons = ['all', 'journalism', 'pr', 'ai', 'sl'];
+      
+      buttons.forEach(b => {
+        const btn = document.getElementById('btn-filter-' + b);
+        if (btn) {
+          if (b === category) {
+            btn.classList.add('bg-white', 'dark:bg-stone-700', 'shadow-sm', 'text-stone-900', 'dark:text-white');
+            btn.classList.remove('text-stone-600', 'dark:text-stone-300');
+          } else {
+            btn.classList.remove('bg-white', 'dark:bg-stone-700', 'shadow-sm', 'text-stone-900', 'dark:text-white');
+            btn.classList.add('text-stone-600', 'dark:text-stone-300');
+          }
+        }
+      });
+
+      cards.forEach(card => {
+        const cats = card.getAttribute('data-category');
+        if (category === 'all' || cats.includes(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      showToast(`Filtered schedule: ${category.toUpperCase()}`);
+    }
+
+    // AI Editor Simulator Scenarios Data
+    const scenarios = {
+      lead: {
+        title: "News Lead (Module 1)",
+        prompt: "Write an inverted pyramid hard news lead about a Saturday community loʻi kalo restoration workday in West Oʻahu with 80 volunteers.",
+        rawAi: "In an inspiring show of community pride and agricultural heritage, roughly 80 enthusiastic local residents and volunteers gathered on Saturday morning under sunny skies in scenic West Oʻahu to joyously help restore a historic taro patch (loi kalo) and protect the beautiful Hawaiian environment.",
+        flaws: [
+          "• Editorializing / non-objective adjectives ('inspiring show', 'joyously', 'scenic')",
+          "• Missing critical specifics: Which exact ahupuaʻa or community organization hosted?",
+          "• AP Style violations: Buries the actionable lead; lacks proper ʻokina (loi vs loʻi kalo)",
+          "• Cliché phrasing without attribution or official spokesperson quote"
+        ],
+        edited: "More than 80 West Oʻahu residents gathered Saturday in Honouliuli to restore two acres of traditional loʻi kalo (wetland taro patches), clearing invasive vegetation to revive ancient stream flow in the ahupuaʻa.",
+        improvements: [
+          "• Hard news lead: Lead with exact count, geographic location (Honouliuli), and direct action",
+          "• Culturally accurate Hawaiian orthography with proper ʻokina and kahakō",
+          "• Eliminates editorial fluff, meeting SPJ standards of objective reporting",
+          "• Positions story for human follow-up quote from kumu or land steward"
+        ]
+      },
+      pitch: {
+        title: "PR Media Pitch (Module 2)",
+        prompt: "Draft an email pitch to a Honolulu Star-Advertiser reporter pitching our non-profit Land Back educational workshop.",
+        rawAi: "Dear Journalist,\n\nI hope you are having a wonderful day! I am thrilled to inform you about a revolutionary and completely groundbreaking workshop that our amazing organization is hosting next month. It is going to change the world. You definitely need to cover this because your readers will be totally blown away by our mission!",
+        flaws: [
+          "• Generic greeting ('Dear Journalist') guarantees immediate trash-bin deletion",
+          "• Empty hype words ('revolutionary', 'groundbreaking', 'totally blown away')",
+          "• Lacks localized news hook, date, time, visual broadcast opportunities, or contact info",
+          "• Tone is overly needy rather than serving the reporter's audience needs"
+        ],
+        edited: "Aloha [Reporter Name],\n\nWith the state Legislature currently debating Native Hawaiian land trust allocations, West Oʻahu high school students and cultural practitioners are launching a hands-on community watershed mapping project in Nānākuli this Saturday.\n\nVisuals include drone-assisted GPS topography surveys and oral history interviews with kūpuna. Kumu [Name] is available for an on-site interview at 9:30 a.m.",
+        improvements: [
+          "• Timely news peg tied to current legislative debate",
+          "• Personal salutation and localized beat relevance",
+          "• Outlines specific broadcast/photo visuals for photojournalists",
+          "• Concludes with direct access to authoritative sources and exact times"
+        ]
+      },
+      memo: {
+        title: "Business Memo (Module 3)",
+        prompt: "Draft an internal corporate memo outlining when staff can use generative AI in client communications.",
+        rawAi: "To Everyone,\n\nAI is here and it is great! You can now use AI to do your work faster and be more productive. Just make sure it looks okay before sending. Let's embrace the future of innovation together!",
+        flaws: [
+          "• Dangerous lack of guardrails: No client confidentiality or trade secret protections",
+          "• No mandatory verification protocol or hallucination risk notice",
+          "• Lacks disclosure policy for external deliverables",
+          "• Vague directive ('make sure it looks okay') invites legal liability"
+        ],
+        edited: "MEMORANDUM\nTO: Communications & Client Accounts Staff\nSUBJECT: Workplace Generative AI Usage & Client Transparency Protocols\n\nEffective immediately, generative AI tools may be utilized solely for preliminary ideation, headline brainstorming, and accessibility copyediting. Under company policy, no proprietary client data or unpublished financials may be inputted into external LLM prompts. All final client deliverables require human fact-checking and formal disclosure attribution.",
+        improvements: [
+          "• Strict standard memo format (To, From, Subject, Date)",
+          "• Clear boundary lines between permissible assistive use and forbidden data leaks",
+          "• Explicit legal protection: Prohibits pasting sensitive client data into models",
+          "• Mandates human-in-the-loop review and transparent attribution"
+        ]
+      }
+    };
+
+    let currentScenarioKey = 'lead';
+
+    function loadScenario(key) {
+      currentScenarioKey = key;
+      const data = scenarios[key];
+
+      // Update buttons
+      ['lead', 'pitch', 'memo'].forEach(k => {
+        const btn = document.getElementById('btn-scen-' + k);
+        if (k === key) {
+          btn.className = "px-3 py-1 text-xs font-semibold rounded-lg bg-aina-700 text-white shadow-sm";
+        } else {
+          btn.className = "px-3 py-1 text-xs font-medium rounded-lg bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-300";
+        }
+      });
+
+      // Update text
+      document.getElementById('promptDisplay').innerText = data.prompt;
+      document.getElementById('rawAiText').innerText = data.rawAi;
+      document.getElementById('editedAiText').innerText = data.edited;
+
+      // Update flaws
+      const flawsList = document.getElementById('flawsList');
+      flawsList.innerHTML = '';
+      data.flaws.forEach(flaw => {
+        const li = document.createElement('li');
+        li.textContent = flaw;
+        flawsList.appendChild(li);
+      });
+
+      // Update improvements
+      const improvementsList = document.getElementById('improvementsList');
+      improvementsList.innerHTML = '';
+      data.improvements.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        improvementsList.appendChild(li);
+      });
+
+      showToast(`Loaded: ${data.title}`);
+    }
+
+    function runEditorSimulation() {
+      const editedBox = document.getElementById('editedAiText');
+      editedBox.classList.add('opacity-40');
+      setTimeout(() => {
+        editedBox.classList.remove('opacity-40');
+        showToast("Editor's Eye analysis refreshed.");
+      }, 250);
+    }
+
+    // AI Disclosure Generator Logic
+    function updateDisclosure() {
+      const assignment = document.getElementById('disc-assignment').value;
+      const tool = document.getElementById('disc-tool').value;
+      const verification = document.getElementById('disc-verification').value;
+
+      const workflows = [];
+      if (document.getElementById('chk-brainstorm').checked) workflows.push('Brainstorming & ideation');
+      if (document.getElementById('chk-lead').checked) workflows.push('Headline & lead options');
+      if (document.getElementById('chk-outline').checked) workflows.push('Structural outlining');
+      if (document.getElementById('chk-copyedit').checked) workflows.push('AP style & grammar review');
+      if (document.getElementById('chk-factcheck').checked) workflows.push('Fact cross-referencing');
+      if (document.getElementById('chk-accessibility').checked) workflows.push('Digital accessibility alt-text');
+
+      const workflowText = workflows.length > 0 ? workflows.join(', ') : 'None';
+
+      const statement = `[ENG 359 AI DISCLOSURE STATEMENT]
+Assignment: ${assignment}
+AI System Used: ${tool}
+Workflow Areas: ${workflowText}
+Human Verification & Oversight: ${verification}
+Student Attestation: I certify that all factual claims have been independently vetted and that the final voice and editorial decisions are my own.`;
+
+      document.getElementById('disclosureOutput').value = statement;
+    }
+
+    // Add listeners to disclosure inputs
+    ['disc-assignment', 'disc-tool', 'disc-verification'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateDisclosure);
+    });
+    ['chk-brainstorm', 'chk-lead', 'chk-outline', 'chk-copyedit', 'chk-factcheck', 'chk-accessibility'].forEach(id => {
+      document.getElementById(id).addEventListener('change', updateDisclosure);
+    });
+
+    function copyDisclosureToClipboard() {
+      const copyText = document.getElementById('disclosureOutput');
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      showToast("Disclosure statement copied to clipboard!");
+    }
+
+    // Toast Utility
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2600);
+    }
+
+    // Initial setup on window load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadScenario('lead');
+      updateDisclosure();
+    });
+  </script>
+</body>
+</html>
